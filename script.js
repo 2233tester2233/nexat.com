@@ -1,9 +1,33 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const validCode = 'SPECIFIC_CODE_2024'; // This is the specific valid registration code
-    const form = document.getElementById('registerForm');
+document.addEventListener('DOMContentLoaded', () => {
+    const validCode = 'SPECIFIC_CODE_2024';
+    const loginContainer = document.getElementById('loginContainer');
+    const registerContainer = document.getElementById('registerContainer');
+    const loginMenu = document.getElementById('loginMenu');
+    const registerMenu = document.getElementById('registerMenu');
+    const registerForm = document.getElementById('registerForm');
     const message = document.getElementById('message');
 
-    form.addEventListener('submit', (e) => {
+    loginMenu.addEventListener('click', () => {
+        registerContainer.classList.remove('show');
+        registerContainer.classList.add('hide');
+        setTimeout(() => {
+            registerContainer.style.display = 'none';
+            loginContainer.classList.add('show');
+            loginContainer.classList.remove('hide');
+        }, 500);
+    });
+
+    registerMenu.addEventListener('click', () => {
+        loginContainer.classList.remove('show');
+        loginContainer.classList.add('hide');
+        setTimeout(() => {
+            loginContainer.style.display = 'none';
+            registerContainer.classList.add('show');
+            registerContainer.classList.remove('hide');
+        }, 500);
+    });
+
+    registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const username = document.getElementById('username').value;
@@ -13,10 +37,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (code === validCode) {
             message.style.color = 'green';
             message.innerText = 'Registration successful!';
-            // Here you can add further actions, like sending the form data to the server
         } else {
             message.style.color = 'red';
             message.innerText = 'Invalid registration code. Please try again.';
         }
     });
+
+    // Initially show the login container
+    loginContainer.classList.add('show');
 });

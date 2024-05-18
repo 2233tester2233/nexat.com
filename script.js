@@ -9,22 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loginMenu.addEventListener('click', () => {
         registerContainer.classList.remove('show');
-        registerContainer.classList.add('hide');
-        setTimeout(() => {
-            registerContainer.style.display = 'none';
-            loginContainer.classList.add('show');
-            loginContainer.classList.remove('hide');
-        }, 500);
+        loginContainer.classList.add('show');
+        loginMenu.classList.add('active');
+        registerMenu.classList.remove('active');
     });
 
     registerMenu.addEventListener('click', () => {
         loginContainer.classList.remove('show');
-        loginContainer.classList.add('hide');
-        setTimeout(() => {
-            loginContainer.style.display = 'none';
-            registerContainer.classList.add('show');
-            registerContainer.classList.remove('hide');
-        }, 500);
+        registerContainer.classList.add('show');
+        registerMenu.classList.add('active');
+        loginMenu.classList.remove('active');
     });
 
     registerForm.addEventListener('submit', (e) => {

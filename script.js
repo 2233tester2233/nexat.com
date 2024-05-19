@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const validCode = 'SPECIFIC_CODE_2024';
+    const validLogin = { username: 'user', password: 'password' }; // Example valid credentials
     const loginContainer = document.getElementById('loginContainer');
     const registerContainer = document.getElementById('registerContainer');
     const loginMenu = document.getElementById('loginMenu');
     const registerMenu = document.getElementById('registerMenu');
     const registerForm = document.getElementById('registerForm');
-    const message = document.getElementById('message');
+    const loginForm = document.getElementById('loginForm');
+    const loginMessage = document.getElementById('loginMessage');
+    const registerMessage = document.getElementById('registerMessage');
+    const popupMenu = document.getElementById('popupMenu');
+    const closePopup = document.getElementById('closePopup');
 
     loginMenu.addEventListener('click', () => {
         registerContainer.classList.remove('show');
@@ -29,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const code = document.getElementById('code').value;
 
         if (code === validCode) {
-            message.style.color = 'green';
-            message.innerText = 'Registration successful!';
+            registerMessage.style.color = 'green';
+            registerMessage.innerText = 'Registration successful!';
 
             // Hide the register menu and switch to login form
             registerMenu.style.display = 'none';
@@ -41,9 +46,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 registerMenu.classList.remove('active');
             }, 500);
         } else {
-            message.style.color = 'red';
-            message.innerText = 'Invalid registration code. Please try again.';
+            registerMessage.style.color = 'red';
+            registerMessage.innerText = 'Invalid registration code. Please try again.';
         }
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+
+        if (username === validLogin.username && password === validLogin.password) {
+            loginMessage.style.color = 'green';
+            loginMessage.innerText = 'Login successful!';
+            setTimeout(() => {
+                popupMenu.classList.add('show');
+            }, 500);
+        } else {
+            loginMessage.style.color = 'red';
+            loginMessage.innerText = 'Invalid username or password. Please try again.';
+        }
+    });
+
+    closePopup.addEventListener('click', () => {
+        popupMenu.classList.remove('show');
     });
 
     // Initially show the login container

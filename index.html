@@ -23,6 +23,7 @@
                 <input type="password" id="loginPassword" name="password" required>
             </div>
             <button type="submit">Login</button>
+            <p id="loginMessage"></p>
         </form>
     </div>
     <div class="container" id="registerContainer">
@@ -41,8 +42,13 @@
                 <input type="text" id="code" name="code" required>
             </div>
             <button type="submit">Register</button>
-            <p id="message"></p>
+            <p id="registerMessage"></p>
         </form>
+    </div>
+    <div class="popup-menu" id="popupMenu">
+        <h2>Welcome</h2>
+        <p>You have successfully logged in!</p>
+        <button id="closePopup">Close</button>
     </div>
     <script src="script.js"></script>
 </body>

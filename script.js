@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const validLogin = { username: 'user', password: 'password' }; // Example valid credentials
     const loginContainer = document.getElementById('loginContainer');
     const registerContainer = document.getElementById('registerContainer');
+    const menuContainer = document.getElementById('menuContainer');
     const loginMenu = document.getElementById('loginMenu');
     const registerMenu = document.getElementById('registerMenu');
     const registerForm = document.getElementById('registerForm');
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
     const registerMessage = document.getElementById('registerMessage');
-    const popupMenu = document.getElementById('popupMenu');
-    const closePopup = document.getElementById('closePopup');
+    const logoutButton = document.getElementById('logoutButton');
 
     loginMenu.addEventListener('click', () => {
         registerContainer.classList.remove('show');
@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             loginMessage.style.color = 'green';
             loginMessage.innerText = 'Login successful!';
             setTimeout(() => {
-                popupMenu.classList.add('show');
+                loginContainer.classList.remove('show');
+                menuContainer.classList.add('show');
             }, 500);
         } else {
             loginMessage.style.color = 'red';
@@ -69,8 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    closePopup.addEventListener('click', () => {
-        popupMenu.classList.remove('show');
+    logoutButton.addEventListener('click', () => {
+        menuContainer.classList.remove('show');
+        loginContainer.classList.add('show');
+        loginMessage.innerText = '';
+        loginForm.reset();
     });
 
     // Initially show the login container

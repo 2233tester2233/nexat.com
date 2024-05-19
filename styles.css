@@ -81,6 +81,27 @@ input:focus {
     border-color: #5cb85c;
 }
 
-#message {
+#loginMessage, #registerMessage {
     margin-top: 15px;
+}
+
+.popup-menu {
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.popup-menu.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
